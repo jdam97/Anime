@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font: 62.5%;
+}
+/* Header */
+header{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: black;
+
+}
+
+.titulo-logo{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.titulo-logo h1{
+    color: white;
+}
+
+form{
+    display: flex;
+    border: none;
+}
+.form input{
+   padding: .5rem;
+   border-radius: 1rem 0 0 1rem;
+   border: none;
+
+}
+.form button{
+    padding: .3rem;
+    border-radius:  0 1rem 1rem 0;
+    border: none;
+}
+
+.titulo-logo img{
+    width: 6rem;
+    border-radius: 20rem;
+}
+
