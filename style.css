@@ -77,3 +77,28 @@ form{
     height: 100%;
 }
 
+/* Contenedor cards */
+.contenedor-cards{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 2rem 0;
+    
+}
+
+/* Cards */
+
+.card{
+    padding: .5rem;
+    border: thin solid black;
+    cursor: pointer;
+    width: 17rem;
+}
+
+.card img{
+   
+    width: 100%;
+}
+.card h2{
+    text-align: center;
+}

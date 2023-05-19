@@ -24,10 +24,18 @@ const getGeneros = async () => {
     for (let i = 0; i < generos.length; i++) {
         genero.innerHTML += `<option value=${generos[i]._id}">${generos[i]._id}</option>`
     }
-    
-
-
 }
 
+
+
+//Get all
+const getAllAnimes = async () => {
+    options.method = "GET";
+    let animes = await (await fetch(`https://anime-db.p.rapidapi.com/anime?page=1&size=20&sortOrder=asc`,options)).json();
+    
+
+ }
+ //invocaciones funciones
 // getGeneros();
+ getAllAnimes()
 
