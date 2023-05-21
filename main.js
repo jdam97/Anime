@@ -1,6 +1,8 @@
 //boton search
 const btn = document.querySelector('#btn')
 let genero = document.querySelector('#genero');
+//cards
+let contenedorCards = document.querySelector('#contenedor-cards')
 
 const options = {
     method: 'GET',
@@ -26,16 +28,20 @@ const getGeneros = async () => {
     }
 }
 
-
-
 //Get all
 const getAllAnimes = async () => {
     options.method = "GET";
     let animes = await (await fetch(`https://anime-db.p.rapidapi.com/anime?page=1&size=20&sortOrder=asc`,options)).json();
-    
-
+    for(let i=0;i<animes.data.length;i++){
+        contenedorCards.innerHTML += `
+        <div class="card">
+            <img src="${animes.data[i].image}" alt="haikyu">
+            <h2>${animes.data[i].title}!!!</h2>
+        </div>
+        `
+    }
  }
  //invocaciones funciones
 // getGeneros();
- getAllAnimes()
+//  getAllAnimes()
 
