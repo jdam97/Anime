@@ -79,7 +79,7 @@ form{
 
 /* Contenedor cards */
 .contenedor-cards{
-    padding: 1rem;
+    padding: 2rem;
     display: grid;
     grid-template-columns: repeat(5,1fr);
     gap: 2rem 0;
