@@ -12,17 +12,36 @@ const options = {
         'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
     }
 };
-
+//Event search
 btn.addEventListener('click', (e) => {
     e.preventDefault();
     tituloGenre.innerHTML = (genero.value).toUpperCase()
+    
+    searchAnimeByName(search.value)
+})
+//Event genre
+genero.addEventListener('click',(e)=>{
     searchAnimeByGenre(genero.value)
-
 })
 
+//Search by genre
 const searchAnimeByGenre = async (genre) => {
     options.method = "GET";
     let animes = await (await fetch(`https://anime-db.p.rapidapi.com/anime?page=1&size=20&genres=${genre}`, options)).json();
+    contenedorCards.innerHTML = ''
+    for (let i = 0; i < animes.data.length; i++){
+        contenedorCards.innerHTML += `
+        <div class="card">
+            <img src="${animes.data[i].image}" alt="${animes.data[i].title}">
+            <h2>${animes.data[i].title}</h2>
+        </div>
+        `
+    }
+}
+//search by name
+const searchAnimeByName = async (name) => {
+    options.method = "GET";
+    let animes = await (await fetch(`https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=${name}`, options)).json();
     contenedorCards.innerHTML = ''
     for (let i = 0; i < animes.data.length; i++){
         contenedorCards.innerHTML += `
@@ -59,12 +78,7 @@ const getAllAnimes = async () => {
     }
 }
 
-function searchGenre() {
-
-}
-
 //invocaciones funciones
-
-// getGeneros();
-// getAllAnimes()
+getGeneros();
+getAllAnimes()
 
