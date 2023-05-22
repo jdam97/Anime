@@ -4,6 +4,8 @@ let genero = document.querySelector('#genero');
 //cards
 let contenedorCards = document.querySelector('#contenedor-cards')
 let tituloGenre = document.querySelector('#hero-title h2')
+const modal = document.querySelector('#modal')
+
 
 const options = {
     method: 'GET',
@@ -15,14 +17,42 @@ const options = {
 //Event search
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    tituloGenre.innerHTML = (genero.value).toUpperCase()
-    
-    searchAnimeByName(search.value)
+    // searchAnimeByName(search.value)
 })
 //Event genre
-genero.addEventListener('click',(e)=>{
+genero.addEventListener('click',()=>{
     searchAnimeByGenre(genero.value)
+    //   tituloGenre.textContent = (genero.value).toUpperCase()
 })
+
+//Event modal cards
+contenedorCards.addEventListener('click',(e)=>{
+    
+    if(e.target.localName =='img'||e.target.localName == 'h2'){
+        console.log(e)
+        modal.innerHTML = `
+        <div class="contenedor-modal">
+                <img src="${e.target.parentElement.dataset.img}" alt="">
+                <div class="info">
+                    <h2>${e.target.parentElement.dataset.title}</h2>
+                    <p id="episodios">${e.target.parentElement.dataset.episodios}</p>
+                    <p id="type">${e.target.parentElement.dataset.type}</p>
+                    <p id="status">${e.target.parentElement.dataset.status}</p>
+                    <p id="descripcion">${e.target.parentElement.dataset.description}</p>
+                </div>
+                <button>X</button>
+            </div>
+        `
+        modal.classList.toggle('active')
+    }
+})
+modal.addEventListener('click',(e) => {
+    if (e.target.localName=='button'){
+        modal.classList.toggle('active')
+    }
+})
+
+
 
 //Search by genre
 const searchAnimeByGenre = async (genre) => {
@@ -31,7 +61,7 @@ const searchAnimeByGenre = async (genre) => {
     contenedorCards.innerHTML = ''
     for (let i = 0; i < animes.data.length; i++){
         contenedorCards.innerHTML += `
-        <div class="card">
+        <div class="card" data-description="${animes.data[i].synopsis}" data-episodios="${animes.data[i].episodes}" data-type="${animes.data[i].type}" data-status="${animes.data[i].status}" data-img="${animes.data[i].image}" data-title="${animes.data[i].title}>
             <img src="${animes.data[i].image}" alt="${animes.data[i].title}">
             <h2>${animes.data[i].title}</h2>
         </div>
@@ -45,7 +75,7 @@ const searchAnimeByName = async (name) => {
     contenedorCards.innerHTML = ''
     for (let i = 0; i < animes.data.length; i++){
         contenedorCards.innerHTML += `
-        <div class="card">
+        <div class="card" data-description="${animes.data[i].synopsis}" data-episodios="${animes.data[i].episodes}" data-type="${animes.data[i].type}" data-status="${animes.data[i].status}" data-img="${animes.data[i].image}" data-title="${animes.data[i].title}>
             <img src="${animes.data[i].image}" alt="${animes.data[i].title}">
             <h2>${animes.data[i].title}</h2>
         </div>
@@ -70,7 +100,7 @@ const getAllAnimes = async () => {
     let animes = await (await fetch(`https://anime-db.p.rapidapi.com/anime?page=1&size=20&sortOrder=asc`, options)).json();
     for (let i = 0; i < animes.data.length; i++) {
         contenedorCards.innerHTML += `
-        <div class="card">
+        <div class="card" data-description="${animes.data[i].synopsis}" data-episodios="${animes.data[i].episodes}" data-type="${animes.data[i].type}" data-status="${animes.data[i].status}" data-img="${animes.data[i].image}" data-title="${animes.data[i].title}">
             <img src="${animes.data[i].image}" alt="haikyu">
             <h2>${animes.data[i].title}</h2>
         </div>
@@ -79,6 +109,7 @@ const getAllAnimes = async () => {
 }
 
 //invocaciones funciones
+
 getGeneros();
 getAllAnimes()
 
