@@ -103,7 +103,6 @@ form{
 }
 
 .card img{
-   
     width: 100%;
 }
 .card h2{
@@ -123,13 +122,11 @@ form{
     display: none;
     justify-content: center;
     align-items: center;
-   
 }
 
 .modal.active{
     display: flex;
 }
-
 
 .contenedor-modal{
     background-color: aliceblue;
@@ -145,8 +142,9 @@ form{
 }
 
 .contenedor-modal img{
-    height: 600px;
-    width: 600px;
+    height: 400px;
+    width: 400px;
+    margin-top: 6rem;
 }
 
 .contenedor-modal button{
@@ -173,7 +171,7 @@ form{
     flex-direction: column;
     width: 30rem;
     padding: 1rem;
-    margin-top: 8rem;
+    margin-top: 5rem;
     gap: 1rem;
 }
 
@@ -186,5 +184,10 @@ form{
     font-weight: bold;
     font-size: 20px;
 }
+
+.info p{
+    font-size: 20px;
+}
+
 
 

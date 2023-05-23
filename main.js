@@ -42,7 +42,6 @@ contenedorCards.addEventListener('click',(e)=>{
                     <button>X</button>
                 </div>
             </div>
-            
         `
         modal.classList.toggle('active')
     }
