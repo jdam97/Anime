@@ -17,12 +17,12 @@ const options = {
 //Event search
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    // searchAnimeByName(search.value)
+    searchAnimeByName(search.value)
 })
 //Event genre
 genero.addEventListener('click',()=>{
     searchAnimeByGenre(genero.value)
-    //   tituloGenre.textContent = (genero.value).toUpperCase()
+    tituloGenre.textContent = (genero.value).toUpperCase()
 })
 
 //Event modal cards
@@ -61,7 +61,7 @@ const searchAnimeByGenre = async (genre) => {
     contenedorCards.innerHTML = ''
     for (let i = 0; i < animes.data.length; i++){
         contenedorCards.innerHTML += `
-        <div class="card" data-description="${animes.data[i].synopsis}" data-episodios="${animes.data[i].episodes}" data-type="${animes.data[i].type}" data-status="${animes.data[i].status}" data-img="${animes.data[i].image}" data-title="${animes.data[i].title}>
+        <div class="card" data-description="${animes.data[i].synopsis}" data-episodios="${animes.data[i].episodes}" data-type="${animes.data[i].type}" data-status="${animes.data[i].status}" data-img="${animes.data[i].image}" data-title="${animes.data[i].title}">
             <img src="${animes.data[i].image}" alt="${animes.data[i].title}">
             <h2>${animes.data[i].title}</h2>
         </div>
@@ -109,7 +109,6 @@ const getAllAnimes = async () => {
 }
 
 //invocaciones funciones
-
 getGeneros();
 getAllAnimes()
 
