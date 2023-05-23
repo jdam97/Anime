@@ -35,13 +35,14 @@ contenedorCards.addEventListener('click',(e)=>{
                 <img src="${e.target.parentElement.dataset.img}" alt="">
                 <div class="info">
                     <h2>${e.target.parentElement.dataset.title}</h2>
-                    <p id="episodios">${e.target.parentElement.dataset.episodios}</p>
-                    <p id="type">${e.target.parentElement.dataset.type}</p>
-                    <p id="status">${e.target.parentElement.dataset.status}</p>
+                    <p id="episodios"> <span>Episodios: </span> ${e.target.parentElement.dataset.episodios}</p>
+                    <p id="type"> <span>Tipo: </span>${e.target.parentElement.dataset.type}</p>
+                    <p id="status"><span>Estado: </span>${e.target.parentElement.dataset.status}</p>
                     <p id="descripcion">${e.target.parentElement.dataset.description}</p>
+                    <button>X</button>
                 </div>
-                <button>X</button>
             </div>
+            
         `
         modal.classList.toggle('active')
     }
@@ -75,7 +76,7 @@ const searchAnimeByName = async (name) => {
     contenedorCards.innerHTML = ''
     for (let i = 0; i < animes.data.length; i++){
         contenedorCards.innerHTML += `
-        <div class="card" data-description="${animes.data[i].synopsis}" data-episodios="${animes.data[i].episodes}" data-type="${animes.data[i].type}" data-status="${animes.data[i].status}" data-img="${animes.data[i].image}" data-title="${animes.data[i].title}>
+        <div class="card" data-description="${animes.data[i].synopsis}" data-episodios="${animes.data[i].episodes}" data-type="${animes.data[i].type}" data-status="${animes.data[i].status}" data-img="${animes.data[i].image}" data-title="${animes.data[i].title}">
             <img src="${animes.data[i].image}" alt="${animes.data[i].title}">
             <h2>${animes.data[i].title}</h2>
         </div>
